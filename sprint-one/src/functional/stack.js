@@ -15,6 +15,7 @@ var makeStack = function(){
     if(size > 0){
       size--;
       var value = storage[size];
+      delete storage[size];
       return value;
     }
   };

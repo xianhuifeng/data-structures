@@ -6,7 +6,6 @@ var makeQueue = function(){
   _.extend(someInstance,  queueMethods);
   someInstance.ind = 0;
   someInstance.counter = 0;
-  someInstance.len = someInstance.ind - someInstance.counter;
   someInstance.storage = {};
 
 
@@ -14,17 +13,19 @@ var makeQueue = function(){
 };
 
 var queueMethods = {
+  len: function(){
+    return this.ind - this.counter;
+  },
+
   size: function(){
-    return this.len;
+    return this.len();
   },
   enqueue: function(value){
     this.storage[this.ind] = value;
-    this.len++;
     this.ind++;
   },
   dequeue: function(){
-    if (this.len > 0){
-      this.len--;
+    if (this.len() > 0){
       var value = this.storage[this.counter];
       delete this.storage[this.counter];
       this.counter++;
@@ -33,8 +34,3 @@ var queueMethods = {
   }
 };
 
-function a(){
-  a.b = 1 + 3;
-}
-console.log(a.b);
-var a = makeQueue();

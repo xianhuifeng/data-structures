@@ -2,15 +2,13 @@ var makeQueue = function(){
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   var someInstance = {};
-  var len = 0;
-  var storage = {};
-  var ind = 0;
-  var counter = 0;
+
   _.extend(someInstance,  queueMethods);
-  someInstance.len = len;
-  someInstance.storage = storage;
-  someInstance.ind = ind;
-  someInstance.counter = counter;
+  someInstance.ind = 0;
+  someInstance.counter = 0;
+  someInstance.len = someInstance.ind - someInstance.counter;
+  someInstance.storage = {};
+
 
   return someInstance;
 };
@@ -35,5 +33,8 @@ var queueMethods = {
   }
 };
 
-
-
+function a(){
+  a.b = 1 + 3;
+}
+console.log(a.b);
+var a = makeQueue();

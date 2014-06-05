@@ -1,12 +1,10 @@
 var makeStack = function() {
   var someInstance = {};
-  var len = 0;
-  var storage = {};
   someInstance = _.extend(someInstance, stackMethods);
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   //console.log(someInstance);
-  someInstance.len = len;
-  someInstance.storage = storage;
+  someInstance.len = 0;
+  someInstance.storage = {};
   return someInstance;
 };
 

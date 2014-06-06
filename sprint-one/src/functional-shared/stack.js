@@ -28,3 +28,8 @@ var stackMethods = {
   }
 
 };
+
+var stacky = makeStack();
+var stacky2 = makeStack();
+console.log(1)
+console.log(stacky.push === stacky2.push);

@@ -26,3 +26,8 @@ var makeStack = function(){
 
   return someInstance;
 };
+
+var magaStack = {};
+for(var i = 0; i< 1000000; i++){
+  magaStack[i] = makeStack();
+}

@@ -23,3 +23,8 @@ Stack.prototype.pop = function(){
     return value;
   }
 };
+
+var megaStack = {};
+for (var i = 0; i < 1000000; i++){
+  megaStack[i] = new Stack();
+}

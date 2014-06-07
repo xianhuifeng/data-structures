@@ -44,7 +44,7 @@ describe('graph', function() {
     graph.addNode('apples');
     graph.addNode('bananas');
     graph.addNode('satsumas', 'bananas');
-    graph.addEdge('satsumas', 'apples');
+    graph.addEdge('satsumas', 'apples'); //?
     graph.removeEdge('apples', 'bananas');
     expect(graph.getEdge('apples', 'bananas')).to.equal(false);
   });

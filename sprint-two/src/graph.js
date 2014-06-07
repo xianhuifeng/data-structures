@@ -65,14 +65,17 @@ Graph.prototype.removeNode = function(node){
 };
 
 Graph.prototype.getEdge = function(fromNode, toNode){
-  var fromIndex = this.findNode(fromNode);
-  var firstNode = this.storage[fromIndex];
-  var connections = firstNode.connections;
-  for (var i in connections){
-    if(connections[i].value === toNode){
-      return true;
+    var fromIndex = this.findNode(fromNode);
+    var firstNode = this.storage[fromIndex];
+    if (fromIndex !== -1){
+      var connections = firstNode.connections;
+      for (var i in connections){
+        if(connections[i].value === toNode){
+          return true;
+        }
+      }
     }
-  }
+
   return false;
 };
 
@@ -101,16 +104,21 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
       }
     }
   };
-  if(fromConnections.length === 0){
-    this.storage.splice(indexOfFrom, 1);
-  }
-
-  if(toConnections.length === 0 && fromConnections.length > 0){
-    this.storage.splice(indexOfTo, 1);
-  }
   deletelink(toConnections, fromNode);
   deletelink(fromConnections, toNode);
 
+  if (this.storage.length === 2 && indexOfFrom !== -1 &&
+    indexOfTo !== -1){
+    this.storage.pop();
+    this.storage.pop();
+  }
+  if(fromConnections.length === 0){
+    this.storage.splice(indexOfFrom, 1);
+  }
+  indexOfTo = this.findNode(toNode);
+  if(toConnections.length === 0 && fromConnections.length > 0){
+    this.storage.splice(indexOfTo, 1);
+  }
 };
 
 /*
